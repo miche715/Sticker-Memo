@@ -1,7 +1,7 @@
 package com.example.stickermemoserver;
 
-//import kr.co.neighbor21.cms.filter.JWTAuthenticationFilter;
-//import kr.co.neighbor21.cms.utility.JWTTokenProvider;
+// import kr.co.neighbor21.cms.filter.JWTAuthenticationFilter;
+// import kr.co.neighbor21.cms.utility.JWTTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,7 +33,7 @@ public class SecurityConfiguration
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/users/register").permitAll()
+                .antMatchers("/api/users/join", "/api/users/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .build();

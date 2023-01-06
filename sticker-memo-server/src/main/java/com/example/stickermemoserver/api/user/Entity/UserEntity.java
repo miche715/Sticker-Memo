@@ -18,4 +18,7 @@ public class UserEntity
 
     @Column(name = "PASSWORD")
     private String password;
+
+    @Column(name = "ROLE")
+    private String role;
 }
