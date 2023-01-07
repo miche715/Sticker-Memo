@@ -1,7 +1,7 @@
 package com.example.stickermemoserver;
 
-// import kr.co.neighbor21.cms.filter.JWTAuthenticationFilter;
-// import kr.co.neighbor21.cms.utility.JWTTokenProvider;
+import com.example.stickermemoserver.filter.JwtAuthenticationFilter;
+import com.example.stickermemoserver.utility.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfiguration
 {
-    // private final JWTTokenProvider jwtTokenProvider;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception
@@ -32,26 +32,12 @@ public class SecurityConfiguration
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers("/api/users/join", "/api/users/login").permitAll()
+                .antMatchers("/api/users/logout").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .build();
-
-//        return httpSecurity
-//                .httpBasic().disable()
-//                .csrf().disable()
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and()
-//                .authorizeRequests()
-//                // .antMatchers("/api/**").authenticated()
-//                .antMatchers("/api/users/signup", "/api/users/login").permitAll()
-//                .antMatchers("/api/users/detail").hasAnyRole("USER", "ADMIN")
-//                .antMatchers("/api/vacations/register", "/api/vacations/my-vacations", "/api/vacations/approved-vacations").hasAnyRole("USER", "ADMIN")
-//                .antMatchers("/api/vacations/register-vacations", "/api/vacations/modify-vacation").hasRole("ADMIN")
-//                .anyRequest().authenticated()
-//                .and()
-//                .addFilterBefore(new JWTAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
-//                .build();
     }
 }
