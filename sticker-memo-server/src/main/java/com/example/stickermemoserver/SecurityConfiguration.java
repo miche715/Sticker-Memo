@@ -34,7 +34,7 @@ public class SecurityConfiguration
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/api/users/join", "/api/users/login").permitAll()
+                .antMatchers("/api/users/join", "/api/users/login"/*, "/api/users/post-test", "/api/users/get-test"*/).permitAll()
                 .antMatchers("/api/users/logout").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()

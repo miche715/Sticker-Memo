@@ -5,10 +5,12 @@ import com.example.stickermemoserver.api.user.service.UserService;
 import com.example.stickermemoserver.response.ResponseBody;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -48,4 +50,26 @@ public class UserController
         httpServletResponse.addCookie((Cookie)responseMap.get("cookie"));
         return (ResponseEntity<ResponseBody>)responseMap.get("responseEntity");
     }
+
+//    @PostMapping("/post-test")
+//    public ResponseEntity<ResponseBody> postTest(HttpServletResponse httpServletResponse, @RequestBody String requestJSON)
+//    {
+//        UserEntity userEntity = gson.fromJson(requestJSON, UserEntity.class);
+//        userEntity.setUuid(1L);
+//        userEntity.setRole("ROLE_USER");
+//
+//        return ResponseEntity.status(HttpStatus.OK).body(new ResponseBody(true, "POST 성공", userEntity));
+//    }
+//
+//    @GetMapping("/get-test")
+//    public ResponseEntity<ResponseBody> getTest(HttpServletResponse httpServletResponse)
+//    {
+//        UserEntity userEntity = new UserEntity();
+//        userEntity.setUuid(1L);
+//        userEntity.setUsername("test");
+//        userEntity.setPassword("test");
+//        userEntity.setRole("ROLE_USER");
+//
+//        return ResponseEntity.status(HttpStatus.OK).body(new ResponseBody(true, "GET 성공", userEntity));
+//    }
 }
