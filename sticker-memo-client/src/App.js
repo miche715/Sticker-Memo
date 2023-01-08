@@ -1,9 +1,27 @@
-import React from 'react';
+import React from "react";
+import { Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom"; 
+
+import Login from "./components/login/Login"
+import Join from "./components/join/Join"
+import DashBoard from "./components/dashboard/DashBoard"
 
 const App = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        navigate("/login");
+    }, [])
+    
     return (
         <div>
-            App
+            <Routes>
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/join" element={<Join />} />
+                <Route exact path="/dashboard" element={<DashBoard />} />
+            </Routes>
         </div>
     );
 };
@@ -12,9 +30,9 @@ export default App;
 
 
 
-// import React from 'react';
-// import { useState } from 'react';
-// import { useEffect } from 'react';
+// import React from "react";
+// import { useState } from "react";
+// import { useEffect } from "react";
 
 // const App = () => {
 //     const [username, setUsername] = useState("");
@@ -51,9 +69,9 @@ export default App;
 
 
 
-// import React from 'react';
-// import { useState } from 'react';
-// import { useEffect } from 'react';
+// import React from "react";
+// import { useState } from "react";
+// import { useEffect } from "react";
 
 // const App = () => {
 //     const [username, setUsername] = useState("");
