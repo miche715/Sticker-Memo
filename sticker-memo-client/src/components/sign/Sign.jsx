@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 import InputWithLabel from "./InputWithLabel";
 import SubmitButton from "./SubmitButton";
-import LinkAnchor from "./LinkAnchor";
 
 import Color from "../../utilities/color"
 
 const style = {
     wrapper: {
         width: "100%", 
+        height: "100%", 
 
         display: "flex", 
         flexDirection: "column",
@@ -20,8 +20,10 @@ const style = {
     }, 
 
     form: {
-        width: "30vw", 
+        width: "auto", 
         height: "auto",
+
+        paddingBottom: "2vh", 
 
         borderStyle: "solid", 
         borderWidth: "3px", 
@@ -37,8 +39,6 @@ const style = {
     title: {
         paddingTop: "2vh", 
         paddingBottom: "2vh", 
-        // paddingLeft: "0.5vh", 
-        // paddingRight: "0.5vh", 
 
         backgroundColor: Color.brandColor, 
 
@@ -50,7 +50,7 @@ const style = {
     }
 };
 
-const Login = (props) => {
+const Sign = (props) => {
     const navigate = useNavigate();
 
     const [username, setUsername] = useState("");
@@ -97,17 +97,43 @@ const Login = (props) => {
         });
     };
 
+    const handleJoinButtonClick = (event) => {
+        event.target.disabled = true;
+
+        fetch("/api/users/join", {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json;charset=utf-8",
+                "Accept": "application/json"
+            }, 
+            body: JSON.stringify({
+                username: username, 
+                password: password
+            })
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((responseBody) => {
+            event.target.disabled = false;
+            setUsername("");
+            setPassword("");
+
+            alert(responseBody.message);
+        });
+    };
+
     return (
         <div style={style.wrapper}>
             <div style={style.form}>
-                <label style={style.title}>로그인</label>
+                <label style={style.title}>시작은 창대하지만 끝은 미미한 메모</label>
                 <InputWithLabel label="유저네임" type="text" placeholder="유저네임" value={username} onChange={handleUsernameInputChange} />
                 <InputWithLabel label="패스워드" type="password" placeholder="패스워드" value={password} onChange={handlePasswordInputChange} />
                 <SubmitButton text="로그인" onClick={handleLoginButtonClick} />
-                <LinkAnchor text="회원가입" link="/join"/>
+                <SubmitButton text="회원가입" onClick={handleJoinButtonClick} />
             </div>
         </div>
     );
 };
 
-export default Login;
+export default Sign;

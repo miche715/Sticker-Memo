@@ -4,22 +4,20 @@ import { Route } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
 
-import Login from "./components/login/Login"
-import Join from "./components/join/Join"
+import Sign from "./components/sign/Sign"
 import DashBoard from "./components/dashboard/DashBoard"
 
 const App = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        navigate("/login");
+        navigate("/sign");
     }, [])
     
     return (
         <div style={{"width": "100%"}}>
             <Routes>
-                <Route exact path="/login" element={<Login />} />
-                <Route exact path="/join" element={<Join />} />
+                <Route exact path="/sign" element={<Sign />} />
                 <Route exact path="/dashboard" element={<DashBoard />} />
             </Routes>
         </div>
