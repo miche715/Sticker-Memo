@@ -5,7 +5,7 @@ import Color from "../../utilities/color"
 const style = {
     wrapper: {
         marginTop: "4.5vh", 
-        marginBottom: "4vh", 
+        marginBottom: "1vh", 
         marginLeft: "3vh", 
         marginRight: "3vh", 
 

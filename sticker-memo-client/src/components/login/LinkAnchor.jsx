@@ -1,16 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Color from '../../utilities/color';
 
 const style = {
     anchor: {
-        display: "inline-block",
-
         width: "max-content", 
 
         marginLeft: "3vh",
         marginRight: "3vh", 
-        marginBottom: "1vh", 
+        marginBottom: "2vh", 
 
         fontWeight: "400", 
         fontSize: "0.8em", 
@@ -20,7 +19,9 @@ const style = {
 
 const LinkAnchor = (props) => {
     return (
-        <a href='' style={style.anchor}>{props.text}</a>
+        <Link to={props.link} style={style.anchor}>
+            <a href=''>{props.text}</a>
+        </Link>
     );
 };
 

@@ -21,7 +21,7 @@ const style = {
 
     form: {
         width: "30vw", 
-        height: "45vh",
+        height: "auto",
 
         borderStyle: "solid", 
         borderWidth: "3px", 
@@ -104,8 +104,7 @@ const Login = (props) => {
                 <InputWithLabel label="유저네임" type="text" placeholder="유저네임" value={username} onChange={handleUsernameInputChange} />
                 <InputWithLabel label="패스워드" type="password" placeholder="패스워드" value={password} onChange={handlePasswordInputChange} />
                 <SubmitButton text="로그인" onClick={handleLoginButtonClick} />
-                <LinkAnchor text="회원가입" />
-                <LinkAnchor text="아이디 / 비밀번호 찾기" />
+                <LinkAnchor text="회원가입" link="/join"/>
             </div>
         </div>
     );
