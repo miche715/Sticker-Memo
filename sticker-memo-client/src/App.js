@@ -16,7 +16,7 @@ const App = () => {
     }, [])
     
     return (
-        <div>
+        <div style={{"width": "100%"}}>
             <Routes>
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/join" element={<Join />} />
