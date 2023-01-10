@@ -171,8 +171,8 @@ const Sign = (props) => {
                     onChange={handleUsernameInputChange} />
                 <InputWithLabel label="패스워드" type="password" placeholder="패스워드(6 ~ 20길이의 영문 대·소문자 및 숫자 및 특수문자)" value={password} 
                     onChange={handlePasswordInputChange} />
-                <SubmitButton text="로그인" onClick={handleLoginButtonClick} />
-                <SubmitButton text="회원가입" onClick={handleJoinButtonClick} />
+                <SubmitButton text="로그인" width="auto" height="5vh" onClick={handleLoginButtonClick} />
+                <SubmitButton text="회원가입" width="auto" height="5vh" onClick={handleJoinButtonClick} />
             </div>
         </div>
     );

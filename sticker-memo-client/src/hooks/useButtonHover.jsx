@@ -1,18 +1,16 @@
 import { useState } from "react";
 
-import Color from "../utilities/color";
-
-const useButtonHover = () => {
+const useButtonHover = (enterColor, leaveColor) => {
     const [hover, setHover] = useState(false);
 
     const onMouseEnter = (event) => {
         setHover(true);
-        event.target.style.background = Color.secondBrandColor;
+        event.target.style.background = enterColor;
     }
 
     const onMouseLeave = (event) => {
         setHover(false);
-        event.target.style.background = Color.firstBrandColor;
+        event.target.style.background = leaveColor;
     }
 
     return [onMouseEnter, onMouseLeave];

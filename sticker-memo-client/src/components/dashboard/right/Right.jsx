@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Color from '../../utilities/color';
+import Color from '../../../utilities/color';
 
 const style = {
     wrapper: {
         width: "300px", 
-        height: `calc(100% - 64px)`, 
+        height: `calc(100% - 63px)`, 
 
         position: "fixed", 
         top: "62px", 
@@ -14,7 +14,7 @@ const style = {
         background: Color.firstBrandColor, 
 
         borderStyle: "solid", 
-        borderWidth: "1px", 
+        borderWidth: "0px 1px 1px 1px", 
         borderColor: Color.hintColor, 
         outline: "none", 
     }

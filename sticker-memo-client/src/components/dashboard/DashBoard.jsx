@@ -1,9 +1,9 @@
 import React from "react";
 
-import Header from "./Header";
+import Header from "./header/Header";
+import Right from "./right/Right";
 
 import Color from "../../utilities/color";
-import Right from "./Right";
 
 const style = {
     wrapper: {

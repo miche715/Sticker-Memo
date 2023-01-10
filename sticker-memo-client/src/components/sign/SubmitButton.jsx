@@ -31,7 +31,7 @@ const style = {
 };
 
 const SubmitButton = (props) => {
-    const [onMouseEnter, onMouseLeave] = useButtonHover();
+    const [onMouseEnter, onMouseLeave] = useButtonHover(Color.secondBrandColor, Color.firstBrandColor);
 
     return (
         <div style={style.wrapper}>

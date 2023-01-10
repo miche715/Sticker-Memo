@@ -10,8 +10,9 @@ import DashBoard from "./components/dashboard/DashBoard"
 const App = () => {
     const navigate = useNavigate();
 
+    /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
-        if(!document.cookie.split("=")[0] === "Authorization")
+        if(!document.cookie.split("=")[0] === "Authorization" || document.cookie.length === 0)
         {
             navigate("/sign");
         }
