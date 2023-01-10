@@ -27,7 +27,7 @@ const style = {
 
         borderStyle: "solid", 
         borderWidth: "3px", 
-        borderColor: Color.brandColor, 
+        borderColor: Color.firstBrandColor, 
 
         display: "flex", 
         flexDirection: "column",
@@ -40,7 +40,7 @@ const style = {
         paddingTop: "2vh", 
         paddingBottom: "2vh", 
 
-        backgroundColor: Color.brandColor, 
+        backgroundColor: Color.firstBrandColor, 
 
         fontWeight: "700", 
         fontSize: "1.5em", 

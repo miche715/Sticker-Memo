@@ -1,5 +1,7 @@
 import React from "react";
 
+import useButtonHover from "../../hooks/useButtonHover";
+
 import Color from "../../utilities/color"
 
 const style = {
@@ -20,7 +22,7 @@ const style = {
 
         border: "none", 
 
-        background: Color.brandColor, 
+        background: Color.firstBrandColor, 
 
         fontWeight: "600", 
         fontSize: "1.3em", 
@@ -29,9 +31,15 @@ const style = {
 };
 
 const SubmitButton = (props) => {
+    const [onMouseEnter, onMouseLeave] = useButtonHover();
+
     return (
         <div style={style.wrapper}>
-            <button type="submit" onClick={props.onClick} style={style.button}>{props.text}</button>
+            <button type="submit" 
+                onClick={props.onClick} onMouseEnter={(event) => {onMouseEnter(event)}} onMouseLeave={(event) => {onMouseLeave(event)}} 
+                style={style.button}>
+                    {props.text}
+            </button>
         </div>
     );
 };
