@@ -7,8 +7,6 @@ import { useNavigate } from "react-router-dom";
 import Sign from "./components/sign/Sign"
 import DashBoard from "./components/dashboard/DashBoard"
 
-import { convertCookieToObject } from "./utilities/cookie"
-
 const App = () => {
     const navigate = useNavigate();
 
