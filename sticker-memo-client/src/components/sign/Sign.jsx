@@ -12,6 +12,8 @@ const style = {
         width: "100%", 
         height: "100%", 
 
+        background: Color.whiteColor, 
+
         display: "flex", 
         flexDirection: "column",
 

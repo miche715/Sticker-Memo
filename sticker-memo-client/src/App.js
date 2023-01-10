@@ -15,7 +15,7 @@ const App = () => {
     }, [])
     
     return (
-        <div style={{"width": "100%"}}>
+        <div style={{"width": "100%", "height": "100vh"}}>
             <Routes>
                 <Route exact path="/sign" element={<Sign />} />
                 <Route exact path="/dashboard" element={<DashBoard />} />
