@@ -20,7 +20,7 @@ const style = {
     }, 
 
     form: {
-        width: "30vw", 
+        width: "500px", 
         height: "auto",
 
         paddingBottom: "2vh", 
