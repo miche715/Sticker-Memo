@@ -37,7 +37,7 @@ public class UserService
 
         if(currentUserEntity != null)
         {
-            responseBody = new ResponseBody(false, "이미 가입된 아이디입니다.", null);
+            responseBody = new ResponseBody(false, "이미 가입된 유저네임입니다.", null);
             responseEntity = ResponseEntity.status(HttpStatus.CONFLICT).body(responseBody);
         }
         else
