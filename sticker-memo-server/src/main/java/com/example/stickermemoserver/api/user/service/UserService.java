@@ -84,7 +84,7 @@ public class UserService
         cookie.setMaxAge(cookieValidTime);
         cookie.setPath("/");
         cookie.setDomain("localhost");
-        cookie.setHttpOnly(true);
+        // cookie.setHttpOnly(true);
 
         responseMap.put("responseEntity", responseEntity);
         responseMap.put("cookie", cookie);
@@ -103,7 +103,7 @@ public class UserService
         cookie.setMaxAge(0);
         cookie.setPath("/");
         cookie.setDomain("localhost");
-        cookie.setHttpOnly(true);
+        // cookie.setHttpOnly(true);
 
         responseMap.put("responseEntity", responseEntity);
         responseMap.put("cookie", cookie);
