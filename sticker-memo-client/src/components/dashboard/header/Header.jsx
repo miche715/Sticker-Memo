@@ -10,6 +10,8 @@ const style = {
         width: `calc(100% - 2px)`, 
         height: "60px",
 
+        zIndex: "1",
+
         position: "fixed", 
 
         background: Color.firstBrandColor,

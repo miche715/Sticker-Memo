@@ -16,6 +16,10 @@ const App = () => {
         {
             navigate("/sign");
         }
+        else
+        {
+            navigate("/dashboard");
+        }
     }, [])
     
     return (
