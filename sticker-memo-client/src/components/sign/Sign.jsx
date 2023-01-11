@@ -142,7 +142,7 @@ const Sign = (props) => {
     const checkEmpty = () => {
         if(username == "" || password == "")
         {
-            alert("유저네임 또는 패스워드가 입력되지 않았습니다.")
+            alert("유저네임 또는 패스워드가 입력되지 않았습니다.");
             return true;
         }
         else
@@ -154,7 +154,7 @@ const Sign = (props) => {
     const checkExpression = () => {
         if(!/^[A-za-z0-9]{4,12}$/.test(username) || !/^[a-zA-Z0-9!@#$%^&*()?_~]{6,20}$/.test(password))
         {
-            alert("유저네임 또는 패스워드가 혐식에 맞지 않습니다.")
+            alert("유저네임 또는 패스워드가 형식에 맞지 않습니다.");
             return true;
         }
         else
