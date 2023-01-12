@@ -140,7 +140,7 @@ const Sign = (props) => {
     };
 
     const checkEmpty = () => {
-        if(username == "" || password == "")
+        if(username === "" || password === "")
         {
             alert("유저네임 또는 패스워드가 입력되지 않았습니다.");
             return true;
