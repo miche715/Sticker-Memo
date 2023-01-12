@@ -9,7 +9,7 @@ const style = {
     },
 
     textarea: {
-        width: "100%", 
+        width: `calc(100% - 5px)`, 
         height: `calc(100% - 4.5px)`, 
 
         display: "block", 
@@ -24,9 +24,8 @@ const style = {
 const TextArea = (props) => {
     return (
         <div style={style.wrapper}>
-            <textarea style={style.textarea} placeholder="내용을 입력해 주세요.">
-            
-            </textarea>
+            <textarea style={style.textarea} placeholder="내용을 입력해 주세요." value={props.value} 
+                onChange={props.onChange} />
         </div>
     );
 };

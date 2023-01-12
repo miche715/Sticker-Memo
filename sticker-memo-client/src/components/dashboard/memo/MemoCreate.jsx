@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from "react";
 
 import ChangeButton from './ChangeButton';
 import TextArea from './TextArea';
@@ -62,14 +63,31 @@ const style = {
         flexDirection: "row",
 
         justifyContent: "flex-start", 
-
-        background: "green", 
     }
 }
 
 const MemoCreate = (props) => {
+    const [title, setTitle] = useState("");
+    const [text, setText] = useState("");
+    const [markers, setMarkers] = useState([]);
+
+    const handleTitleInputChange = (event) => {
+        setTitle(event.target.value);
+    };
+
+    const handleTextInputChange = (event) => {
+        setText(event.target.value);
+    };
+
     const handleCreateButtonClick = (event) => {
-        console.log("저장")
+        console.log("저장");
+        console.log(title);
+        console.log(text);
+        
+        for(const marker of markers)
+        {
+            console.log(`${marker.position.lat()} ${marker.position.lng()}`);
+        }
         // event.target.disabled = true;
 
         // if(checkEmpty())
@@ -116,13 +134,14 @@ const MemoCreate = (props) => {
     return (
         <div style={style.wrapper}>
             <div style={style.title}>
-                <input type="text" style={style.title_name} placeholder="제목을 입력해 주세요." />
+                <input type="text" style={style.title_name} placeholder="제목을 입력해 주세요." value={title} 
+                    onChange={(event) => {handleTitleInputChange(event)}} />
                 <ChangeButton text="저장" onClick={handleCreateButtonClick} />
                 <ChangeButton text="취소" onClick={handleCancelButtonClick} />
             </div>
             <div style={style.content}>
-                <TextArea />
-                <MapView />
+                <TextArea value={text} onChange={handleTextInputChange} />
+                <MapView markers={markers} setMarkers={setMarkers} />
             </div>
         </div>
     );
