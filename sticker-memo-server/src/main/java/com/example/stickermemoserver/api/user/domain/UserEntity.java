@@ -1,4 +1,4 @@
-package com.example.stickermemoserver.api.user.Entity;
+package com.example.stickermemoserver.api.user.domain;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

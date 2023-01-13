@@ -1,6 +1,6 @@
 package com.example.stickermemoserver.api.user.controller;
 
-import com.example.stickermemoserver.api.user.Entity.UserEntity;
+import com.example.stickermemoserver.api.user.domain.UserEntity;
 import com.example.stickermemoserver.api.user.service.UserService;
 import com.example.stickermemoserver.response.ResponseBody;
 import com.google.gson.Gson;

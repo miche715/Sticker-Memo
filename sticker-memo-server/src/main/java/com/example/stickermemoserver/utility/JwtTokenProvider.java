@@ -1,6 +1,6 @@
 package com.example.stickermemoserver.utility;
 
-import com.example.stickermemoserver.api.user.Entity.UserEntity;
+import com.example.stickermemoserver.api.user.domain.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;

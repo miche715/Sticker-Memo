@@ -80,51 +80,39 @@ const MemoCreate = (props) => {
     };
 
     const handleCreateButtonClick = (event) => {
-        console.log("저장");
-        console.log(title);
-        console.log(text);
-        
+        const latitudes = [];
+        const longitudes = [];
+
         for(const marker of markers)
         {
-            console.log(`${marker.position.lat()} ${marker.position.lng()}`);
+            latitudes.push(marker.position.lat());
+            longitudes.push(marker.position.lng());
         }
-        // event.target.disabled = true;
 
-        // if(checkEmpty())
-        // {
-        //     event.target.disabled = false;
-        // }
-        // else
-        // {
-        //     fetch("/api/users/login", {
-        //         method: "POST", 
-        //         headers: {
-        //             "Content-Type": "application/json;charset=utf-8",
-        //             "Accept": "application/json"
-        //         }, 
-        //         body: JSON.stringify({
-        //             username: username, 
-        //             password: password
-        //         })
-        //     })
-        //     .then((response) => {
-        //         return response.json();
-        //     })
-        //     .then((responseBody) => {
-        //         event.target.disabled = false;
-        //         setUsername("");
-        //         setPassword("");
-    
-        //         if(responseBody.isSuccess)
-        //         {
-        //             navigate("/dashboard");
-        //         }
-        //         else
-        //         {
-        //             alert(responseBody.message);
-        //         }
-        //     });
-        // }
+        event.target.disabled = true;
+
+        fetch("/api/memos/write", {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json;charset=utf-8",
+                "Accept": "application/json"
+            }, 
+            body: JSON.stringify({
+                title: title, 
+                text: text, 
+                latitudes: latitudes, 
+                longitudes: longitudes
+            })
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((responseBody) => {
+            event.target.disabled = false;
+            alert(responseBody.message);
+
+            props.setSelect(null)
+        });
     };
 
     const handleCancelButtonClick = (event) => {

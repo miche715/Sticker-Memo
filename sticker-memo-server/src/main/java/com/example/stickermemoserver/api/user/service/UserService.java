@@ -1,7 +1,7 @@
 package com.example.stickermemoserver.api.user.service;
 
 import com.example.stickermemoserver.api.user.repository.UserRepository;
-import com.example.stickermemoserver.api.user.Entity.UserEntity;
+import com.example.stickermemoserver.api.user.domain.UserEntity;
 import com.example.stickermemoserver.response.ResponseBody;
 import com.example.stickermemoserver.utility.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
