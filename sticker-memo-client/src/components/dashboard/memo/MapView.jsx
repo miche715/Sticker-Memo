@@ -35,6 +35,21 @@ const MapView = (props) => {
         mapContainer = new naver.maps.Map("mapContainer", INITIAL_TRAFFIC_MAP_OPTION);
         naver.maps.Event.addListener(mapContainer, "click", (event) => handleMapClick(event));
         showMarkersRef.current = [];
+
+        if(props.latitudes && props.longitudes)
+        {
+            if(props.latitudes.length > 0 && props.longitudes.length > 0)
+            {
+                for(let i = 0; i < props.latitudes.length; i++)
+                {
+                    new naver.maps.Marker({
+                        position: new naver.maps.LatLng(props.latitudes[i], props.longitudes[i]), 
+                        map: mapContainer
+                    });
+                }
+    
+            }
+        }
     }, []);
 
     const handleMapClick = (event) => {

@@ -42,7 +42,8 @@ const style = {
 
 const DashBoard = (props) => {
     const [select, setSelect] = useState(null);  // 0: MemoCreate, 1~n MemoDetail
-    
+    const [selectMemo, setSelectMemo] = useState();
+
     const historyReference = useRef(null);
 
     useEffect(() => {
@@ -50,20 +51,49 @@ const DashBoard = (props) => {
         {
             historyReference.current = select;
         }
-    }, [select])
+    }, [select]);
 
     return (
         <div style={style.wrapper}>
             <Header />
-            <Right select={select} setSelect={setSelect} />
+            <Right select={select} setSelect={setSelect} setSelectMemo={setSelectMemo} />
             {select == null 
                 ? <div style={style.information}><p style={style.p}>우측 메뉴에서 메모를 새로 생성하거나, 선택해 주세요.</p></div>
                 : select === 0 
                     ? <MemoCreate setSelect={setSelect} /> 
-                    : <MemoDetail setSelect={setSelect} />
+                    : <MemoDetail setSelect={setSelect} memo={selectMemo}/>
             }
         </div>
     );
 };
 
 export default DashBoard;
+
+// {
+//     "isSuccess": true,
+//     "message": "메모 목록 불러왔습니다.",
+//     "data": [
+//         {
+//             "title": "111",
+//             "text": "111",
+//             "latitudes": [],
+//             "longitudes": []
+//         },
+//         {
+//             "title": "222",
+//             "text": "222",
+//             "latitudes": [
+//                 37.4362776,
+//                 36.6690908,
+//                 36.6250177,
+//                 35.9386666
+//             ],
+//             "longitudes": [
+//                 126.8709106,
+//                 126.8434448,
+//                 127.9420776,
+//                 127.953064
+//             ]
+//         }
+//     ]
+// }

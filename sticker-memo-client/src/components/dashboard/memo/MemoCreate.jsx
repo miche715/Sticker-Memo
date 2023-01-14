@@ -112,6 +112,7 @@ const MemoCreate = (props) => {
             alert(responseBody.message);
 
             props.setSelect(null)
+            window.location.reload();
         });
     };
 

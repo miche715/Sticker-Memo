@@ -1,6 +1,9 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 import CreateMemoButton from './CreateMemoButton';
+import MemoItem from './MemoItem';
 
 import Color from '../../../utilities/color';
 
@@ -28,6 +31,23 @@ const style = {
 };
 
 const Right = (props) => {
+    const [memos, setMemos] = useState([]);
+
+    useEffect(() => {
+        fetch("/api/memos/list")
+        .then((response) => {
+            return response.json();
+        })
+        .then((responseBody) => {
+            setMemos(responseBody.data);
+        })
+    }, []);
+
+    const handleMemoItemClick = (event, memo) => {
+        props.setSelect(event.target.id)
+        props.setSelectMemo(memo);
+    };
+
     const handleCreateMemoButtonClick = (event) => {
         props.setSelect(0);
     };
@@ -37,6 +57,9 @@ const Right = (props) => {
             { props.select !== 0
                 && <CreateMemoButton onClick={handleCreateMemoButtonClick} text="생성" />
             }
+            { memos.map((memo, index) => (
+                <MemoItem key={index} memo={memo} handleMemoItemClick={handleMemoItemClick}/>
+            ))}
         </div>
     );
 };
