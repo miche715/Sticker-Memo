@@ -1,11 +1,9 @@
 /*global naver*/  
 import React from 'react';
-import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 
 import Color from '../../../utilities/color';
-import Marker from '../../../utilities/marker';
 
 const style = {
     wrapper: {
