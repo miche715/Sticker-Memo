@@ -36,7 +36,7 @@ public class SecurityConfiguration
                 .authorizeRequests()
                 .antMatchers("/api/users/join", "/api/users/login"/*, "/api/users/post-test", "/api/users/get-test"*/).permitAll()
                 .antMatchers("/api/users/logout").hasAnyRole("USER")
-                .antMatchers("/api/memos/write").hasAnyRole("USER")
+                .antMatchers("/api/memos/write", "/api/memos/list").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .build();

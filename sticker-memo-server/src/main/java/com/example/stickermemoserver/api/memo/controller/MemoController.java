@@ -7,12 +7,8 @@ import com.example.stickermemoserver.utility.CookieProvider;
 import com.example.stickermemoserver.utility.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.google.gson.Gson;
-
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
@@ -36,5 +32,11 @@ public class MemoController
     {
         return memoService.writeMemo(jwtTokenProvider.getUsername(CookieProvider.getCookieByKey(httpServletRequest, "Authorization").getValue()),
                                      gson.fromJson(requestJSON, MemoDto.class));
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<ResponseBody> getMemoList(HttpServletRequest httpServletRequest)
+    {
+        return memoService.getMemoList(jwtTokenProvider.getUsername(CookieProvider.getCookieByKey(httpServletRequest, "Authorization").getValue()));
     }
 }

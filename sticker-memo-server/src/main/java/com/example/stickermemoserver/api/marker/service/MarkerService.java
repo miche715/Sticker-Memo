@@ -6,6 +6,7 @@ import com.example.stickermemoserver.api.marker.repository.MarkerMemoRepository;
 import com.example.stickermemoserver.api.marker.repository.MarkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,7 +22,7 @@ public class MarkerService
         this.markerMemoRepository = markerMemoRepository;
     }
 
-    public void addMarker(Long memoUuid, List<Double> latitudes, List<Double> longitudes)
+    public void addMarkers(Long memoUuid, List<Double> latitudes, List<Double> longitudes)
     {
         for(int i = 0; i < latitudes.size(); i++)
         {
@@ -35,5 +36,17 @@ public class MarkerService
             markerMemoEntity.setMarkerUuid(markerUuid);
             markerMemoRepository.save(markerMemoEntity);
         }
+    }
+
+    public List<MarkerEntity> getMarkers(Long memoUuid)
+    {
+        List<MarkerEntity> markerEntities = new ArrayList<>();
+
+        for(MarkerMemoEntity markerMemoEntity : markerMemoRepository.findAllByMemoUuid(memoUuid))
+        {
+            markerEntities.add(markerRepository.findById(markerMemoEntity.getMarkerUuid()).get());
+        }
+
+        return markerEntities;
     }
 }
